@@ -1,0 +1,32 @@
+version: '3.5'
+services: 
+
+    # application
+    app:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        restart: always
+        ports: 
+            - "8080:80"
+        env_file: 
+            - ./.env
+
+    # database
+    database:
+        image: mysql:5.6
+        container_name: mysql
+        volumes: 
+            - dbdata:/var/lib/mysql
+        restart: always
+        ports: 
+            - "3306:3306"
+        environment: 
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
+            TZ: UTC
+        env_file: 
+            - ./.env
+
+volumes: 
+    dbdata: 

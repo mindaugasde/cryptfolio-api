@@ -1,0 +1,13 @@
+/vendor
+/.idea
+/.git
+.phpunit.result.cache
+.DS_Store
+Dockerfile
+docker-compose.yml
+.dockerignore
+.gitignore
+.editorconfig
+.styleci.yml
+.env
+README.md
